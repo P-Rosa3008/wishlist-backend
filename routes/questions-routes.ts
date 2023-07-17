@@ -1,8 +1,8 @@
 import express from "express";
-const questionsControllers = require("../controllers/questions-controller");
+const preferencesControllers = require("../controllers/preferences-controller");
 
 const routes = express.Router();
 
-routes.get("/", questionsControllers.getQuestions);
+routes.get("/", preferencesControllers.getQuestions);
 
 module.exports = routes;

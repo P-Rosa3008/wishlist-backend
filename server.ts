@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 const HttpError = require("./models/http-error.ts");
 
-const questionsRoutes = require("./routes/questions-routes");
+const preferencesRoutes = require("./routes/preferences-routes");
 const usersRoutes = require("./routes/users-routes");
 
 const server = express();
@@ -25,7 +25,7 @@ server.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-server.use("/api/questions", questionsRoutes);
+server.use("/api/preferences", preferencesRoutes);
 server.use("/api/users", usersRoutes);
 
 server.use((req: Request, res: Response, next: NextFunction) => {
@@ -41,6 +41,7 @@ server.use((error: any, req: Request, res: Response, next: NextFunction) => {
   res.json({ message: error.message || "An unknown error occurred" });
 });
 
+mongoose.set("strictQuery", false);
 mongoose
   .connect(
     `mongodb+srv://admin:Pedrorosa30081999@cluster.arumyay.mongodb.net/knowyourgame?retryWrites=true&w=majority`
